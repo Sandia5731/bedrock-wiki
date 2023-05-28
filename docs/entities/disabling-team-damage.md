@@ -174,3 +174,612 @@ execute @s[tag=team4] ~ ~ ~ tag @p[rm=0,r=1,tag=!team4] add damage
 
 If you modify `arrow.json`, take into consideration the component groups.
 
+---
+
+tags:
+    - NEW
+---
+
+There is another way to do this, you would still use only the `"components": {}`, and `"events": {}`, but you would already need to use the `"component groups": {}`, and would look like this:
+
+<CodeHeader>BP/entities/player.json#component_groups</CodeHeader>
+
+```json
+
+//"component_groups"
+
+	"minecraft:damage_tag": {
+		"minecraft:damage_sensor"
+			"triggers": [
+				{
+		        	"on_damage": {
+				    	"filters": {
+					    	"any_of": [
+								{
+									"all_of": [
+										{
+											"test": "has_tag",
+											"value": "team_1"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "value": "team_1"
+									    }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "value": "team_2"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "value": "team_2"
+									    }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "value": "team_3"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+									        "value": "team_3"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "value": "team_4"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+									        "value": "team_4"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "value": "team_5"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "value": "team_5"
+									    }
+								    ]
+								}
+							]
+						}
+					},
+					"deals_damage": false
+				},
+				{
+					"on_damage": {
+						"filters": {
+							"any_of": [
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+											"value": "team_1"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+											"value": "team_1"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_2"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_2"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_3"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_3"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_4"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_4"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_5"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_5"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+											"value": "team_1"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_2"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+											"value": "team_1"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_3"
+                                        }
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+											"value": "team_1"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_4"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+											"value": "team_1"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_5"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_2"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+											"value": "team_1"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_2"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_3"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_2"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_4"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_2"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_5"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_3"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+											"value": "team_1"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_3"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_2"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_3"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_4"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_3"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_5"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_4"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+											"value": "team_1"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_4"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_2"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_4"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_3"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_4"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_5"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_5"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+											"value": "team_1"
+                                        } 
+								    ]
+							    },
+							    {
+								    "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_5"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_2"
+									    }
+							        ]
+							    },
+						 	    {
+								    "all_of": [
+								        {
+						    			    "test": "has_tag",
+										    "operator": "!=",
+										    "value": "team_5"
+									    },
+									    {
+									        "test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+									      "value": "team_3"
+									    }
+								    ]
+							    },
+							    {
+							        "all_of": [
+									    {
+											"test": "has_tag",
+										    "operator": "!=",
+							                "value": "team_5"
+									    },
+									    {
+											"test": "has_tag",
+										    "subject": "other",
+										    "operator": "!=",
+										    "value": "team_4"
+									    }
+								    ]
+							    }
+						    ]
+					    }
+				    },
+				"deals_damage": true
+			}
+		]
+	}
+	
+```
+
+This will be used to avoid damage from projectiles.
+
+
+Then we go with the `"components": {}`:
+
+<CodeHeader>BP/entities/player.json#components</CodeHeader>
+
+```json
+
+//"components"
+"minecraft:damage_sensor": {
+	"triggers": [
+		{
+			"on_damage": {
+				"filters": [
+					{
+						"test": "is_family",
+						"subject": "other",
+						"value": "player"
+					},
+					{
+						"test": "has_damage",
+						"operator": "==",
+						"value": "projectile"
+					}
+				],
+				"event": "minecraft:damage_tag"
+			},
+			"deals_damage": false
+		},
+	    {
+			"on_damage": {
+				"filters": {
+					"any_of": [
+						{
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "team_1"
+								},
+								{
+									"test": "has_tag",
+									"subject": "other",
+									"value": "team_1"
+								}
+							]
+						},
+						{
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "team_2"
+								},
+								{
+									"test": "has_tag",
+									"subject": "other",
+									"value": "team_2"
+								}
+							]
+						},
+						{
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "team_3"
+								},
+								{
+									"test": "has_tag",
+									"subject": "other",
+									"value": "team_3"
+								}
+							]	
+						},
+						{
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "team_4"
+								},
+								{
+									"test": "has_tag",
+									"subject": "other",
+									"value": "team_4"
+								}
+							]
+						},
+						{
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "team_5"
+								},
+								{
+									"test": "has_tag",
+									"subject": "other",
+									"value": "team_5"
+								}
+							]
+						}
+					]
+				},
+				"event": "minecraft:damage_tag"
+			},
+			"deals_damage": false
+		}
+	]
+}
+
+```
+
+This would prevent players from the same team from harming each other with arrows and/or blows.
+
+
+And finally in the `"events": {}` would be:
+
+<CodeHeader>BP/entities/player.json#events</CodeHeader>
+
+```json
+
+//"events"
+"minecraft:damage_tag": {
+	"add": {
+		"component_groups": [
+			"minecraft:damage_tag"
+		]
+	}
+}
+
+```
